@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Luna Café — Restaurant Login & Register</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #6c757d, #adb5bd);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #f8f9fa;
+            padding: 35px;
+            width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px #444;
+            text-align: center;
+        }
+
+        h2 {
+            color: #495057;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #adb5bd;
+            border-radius: 6px;
+            background: #ffffff;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            background: #495057;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #343a40;
+        }
+
+        p {
+            font-size: 14px;
+            color: #495057;
+        }
+
+        a {
+            color: #495057;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div id="login">
+        <h2>Luna Café</h2>
+        <h3>Sign In</h3>
+
+        <form onsubmit="loginUser(event)">
+            <input type="email" id="loginEmail"
+                placeholder="Email Address" required>
+
+            <input type="password" id="loginPassword"
+                placeholder="Password" required>
+
+            <button type="submit">Sign In</button>
+        </form>
+
+        <p>Don't have an account?
+            <a onclick="showRegister()">Register</a>
+        </p>
+    </div>
+
+    <div id="register" class="hidden">
+        <h2>Luna Café</h2>
+        <h3>Create Account</h3>
+
+        <form onsubmit="registerUser(event)">
+            <input type="text" id="name"
+                placeholder="Full Name" required>
+
+            <input type="email" id="email"
+                placeholder="Email Address" required>
+
+            <input type="password" id="password"
+                placeholder="Create Password" required>
+
+            <input type="password" id="confirm"
+                placeholder="Confirm Password" required>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p>Already have an account?
+            <a onclick="showLogin()">Sign In</a>
+        </p>
+    </div>
+
+</div>
+
+<script>
+    function showRegister() {
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("register").classList.remove("hidden");
+    }
+
+    function showLogin() {
+        document.getElementById("register").classList.add("hidden");
+        document.getElementById("login").classList.remove("hidden");
+    }
+
+    function registerUser(event) {
+        event.preventDefault();
+
+        let password = document.getElementById("password").value;
+        let confirm = document.getElementById("confirm").value;
+
+        if (password !== confirm) {
+            alert("Passwords do not match!");
+            return;
+        }
+
+        alert("Registration successful! Welcome to Luna Café!");
+        showLogin();
+    }
+
+    function loginUser(event) {
+        event.preventDefault();
+        alert("Sign in successful! Enjoy your meal at Luna Café!");
+    }
+</script>
+
+</body>
+</html>
